@@ -8,20 +8,20 @@ TruthLens is an AI-powered internet detective that analyzes claims, tweets, arti
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🔎 **AI Evidence Scan** — Extracts individual factual claims automatically
-- 🌐 **Live Web Search** — Searches real sources via Tavily API
-- 📊 **Credibility Score** — 0–100 animated meter with explanation
-- ⚠️ **Risk Signal Detection** — Flags manipulation tactics and red flags
-- 🗂️ **Case History** — Saves investigations to your browser (localStorage)
-- 📥 **Downloadable Reports** — Export as .txt files
-- 📋 **Copy Report** — One-click clipboard copy
-- 🔐 **Secure** — API keys never exposed to the browser
+-  **AI Evidence Scan** — Extracts individual factual claims automatically
+-  **Live Web Search** — Searches real sources via Tavily API
+-  **Credibility Score** — 0–100 animated meter with explanation
+-  **Risk Signal Detection** — Flags manipulation tactics and red flags
+-  **Case History** — Saves investigations to your browser (localStorage)
+-  **Downloadable Reports** — Export as .txt files
+-  **Copy Report** — One-click clipboard copy
+-  **Secure** — API keys never exposed to the browser
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Tool | Purpose |
 |------|---------|
@@ -35,7 +35,7 @@ TruthLens is an AI-powered internet detective that analyzes claims, tweets, arti
 
 ---
 
-## 🚀 Quick Start (Local Development)
+##  Quick Start (Local Development)
 
 ### Prerequisites
 - Node.js 18+ installed
@@ -65,7 +65,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📱 Deploy from Your Phone (Vercel)
+##  Deploy from Your Phone (Vercel)
 
 ### Step 1: Push to GitHub (from phone)
 
@@ -93,11 +93,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
    - `TAVILY_API_KEY` = your Tavily key
 6. Tap **Deploy**
 
-Your app will be live at `https://truthlens-xxx.vercel.app` in ~2 minutes! 🎉
+Your app will be live at `https://truthlens-xxx.vercel.app` in ~2 minutes! 
 
 ---
 
-## 🌐 Deploy via Replit (Alternative)
+##  Deploy via Replit (Alternative)
 
 1. Go to [replit.com](https://replit.com) on your phone
 2. Create a new Repl → Import from GitHub → paste your repo URL
@@ -106,7 +106,7 @@ Your app will be live at `https://truthlens-xxx.vercel.app` in ~2 minutes! 🎉
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 truthlens/
@@ -145,27 +145,6 @@ truthlens/
 ├── .gitignore                    ← Files excluded from Git
 └── README.md                     ← This file
 ```
-
----
-
-## 🔑 Environment Variables
-
-| Variable | Required | Source |
-|----------|----------|--------|
-| `GEMINI_API_KEY` | ✅ Yes | [aistudio.google.com](https://aistudio.google.com) |
-| `TAVILY_API_KEY` | Optional | [tavily.com](https://tavily.com) |
-| `SERPAPI_API_KEY` | Optional | [serpapi.com](https://serpapi.com) |
-
-**Security Note:** These variables are loaded on the server only. They are NEVER sent to the browser. This is enforced by Next.js — variables in `.env.local` without the `NEXT_PUBLIC_` prefix stay server-side.
-
----
-
-## ⚠️ Disclaimer
-
-TruthLens is an AI-assisted analysis tool. It is **not** a substitute for professional fact-checking. AI can make mistakes. Always verify important claims through primary sources.
-
----
-
-## 📄 License
+##  License
 
 MIT — free to use, modify, and deploy.
