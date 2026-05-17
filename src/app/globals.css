@@ -1,0 +1,181 @@
+/* ============================================================
+   src/app/globals.css
+   Global styles for TruthLens
+   Tailwind's base styles + our custom additions
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- CSS Custom Properties (Variables) ---- */
+:root {
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+/* ---- Base Styles ---- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #030508;
+  color: #c8d8ea;
+  font-family: var(--font-body);
+}
+
+/* ---- Scrollbar Styling ---- */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1520;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2535;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00d4ff40;
+}
+
+/* ---- Text Selection ---- */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: #e8f4ff;
+}
+
+/* ---- Glass Panel Effect ---- */
+.glass {
+  background: rgba(13, 21, 32, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(26, 37, 53, 0.8);
+}
+
+/* ---- Glow Text Effects ---- */
+.glow-signal {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+.glow-verify {
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+.glow-threat {
+  text-shadow: 0 0 20px rgba(255, 61, 61, 0.5);
+}
+
+/* ---- Dashboard Grid Background ---- */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ---- Scan Line Effect ---- */
+.scan-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 212, 255, 0.012) 2px,
+    rgba(0, 212, 255, 0.012) 4px
+  );
+  pointer-events: none;
+}
+
+/* ---- Corner Accent (case file style) ---- */
+.corner-accent {
+  position: relative;
+}
+.corner-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-top: 1px solid rgba(0, 212, 255, 0.5);
+  border-left: 1px solid rgba(0, 212, 255, 0.5);
+}
+.corner-accent::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.5);
+  border-right: 1px solid rgba(0, 212, 255, 0.5);
+}
+
+/* ---- Animated Scanning Bar ---- */
+@keyframes scanDown {
+  0%   { transform: translateY(0); opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.scan-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  animation: scanDown 2s linear infinite;
+  box-shadow: 0 0 10px #00d4ff, 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+/* ---- Blinking Cursor ---- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+/* ---- Number Counter Animation ---- */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-animate {
+  animation: countUp 0.5s ease-out forwards;
+}
+
+/* ---- Credibility Meter Bar ---- */
+.meter-fill {
+  transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---- Evidence Card Hover ---- */
+.evidence-card {
+  transition: all 0.2s ease;
+}
+.evidence-card:hover {
+  transform: translateX(4px);
+}
+
+/* ---- Mobile Responsive Fixes ---- */
+@media (max-width: 640px) {
+  .glass {
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* ---- Print Styles (for report download) ---- */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+}

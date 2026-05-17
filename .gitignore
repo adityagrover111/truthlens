@@ -1,0 +1,33 @@
+# ============================================================
+# Files NOT to upload to GitHub
+# ============================================================
+
+# Dependencies — too large, gets reinstalled automatically
+/node_modules
+
+# Next.js build output — gets rebuilt on Vercel
+/.next/
+/out/
+
+# Environment variables — contains SECRET API KEYS, never commit!
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vercel
+.vercel
