@@ -1,9 +1,5 @@
-// ============================================================
 // src/app/layout.tsx
-// The ROOT LAYOUT — wraps every page in the app.
-// Think of it as the "frame" that never changes.
-// Fonts, metadata, and global styles go here.
-// ============================================================
+
 
 import type { Metadata } from "next";
 import { Syne, DM_Sans, IBM_Plex_Mono } from "next/font/google";
