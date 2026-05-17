@@ -13,7 +13,7 @@ import { type InvestigationReport, type ApiResponse } from "@/types/investigatio
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ClaimInput from "@/components/ClaimInput";
-import InvestigationReport from "@/components/InvestigationReport";
+import { type InvestigationReport as ReportData, type ApiResponse } from "@/types/investigation";
 import LoadingInvestigation from "@/components/LoadingInvestigation";
 
 // Feature highlights shown on the homepage
@@ -43,7 +43,7 @@ const FEATURES = [
 export default function HomePage() {
   // State for the investigation
   const [isLoading, setIsLoading] = useState(false);
-  const [report, setReport] = useState<InvestigationReport | null>(null);
+  const [report, setReport] = useState<ReportData | null>(null);
   const [isLiveSearch, setIsLiveSearch] = useState(false);
   const [currentClaim, setCurrentClaim] = useState("");
   const [error, setError] = useState<string | null>(null);
