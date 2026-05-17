@@ -169,7 +169,7 @@ Be specific, not vague. Reference actual facts. Minimum 3 items in each evidence
     // GoogleGenerativeAI is imported from the official Google package
     const genAI = new GoogleGenerativeAI(geminiKey);
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash", // Fast and free tier
+      model: "gemini-2.5-flash", // Fast and free tier
       generationConfig: {
         temperature: 0.3,      // Lower = more factual, less creative
         maxOutputTokens: 4096, // Max length of response
