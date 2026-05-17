@@ -1,12 +1,6 @@
-# 🔍 TruthLens — AI Credibility Investigation Tool
-
-> Open a case. Scan the evidence. Get the truth.
+# TruthLens — AI Credibility Investigation Tool
 
 TruthLens is an AI-powered internet detective that analyzes claims, tweets, article snippets, and rumors — then generates a full credibility investigation report with verdict, score, evidence, red flags, and source analysis.
-
-![TruthLens](truthlens-three-eta.vercel.app)
-
----
 
 ##  Features
 
@@ -17,7 +11,6 @@ TruthLens is an AI-powered internet detective that analyzes claims, tweets, arti
 -  **Case History** — Saves investigations to your browser (localStorage)
 -  **Downloadable Reports** — Export as .txt files
 -  **Copy Report** — One-click clipboard copy
--  **Secure** — API keys never exposed to the browser
 
 ---
 
@@ -65,47 +58,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-##  Deploy from Your Phone (Vercel)
-
-### Step 1: Push to GitHub (from phone)
-
-1. Go to [github.com](https://github.com) on your phone
-2. Tap **+** → **New repository**
-3. Name it `truthlens`, set to **Public**, tap **Create repository**
-4. On your computer/Replit/Codespaces, run:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: TruthLens"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/truthlens.git
-   git push -u origin main
-   ```
-
-### Step 2: Deploy to Vercel (from phone)
-
-1. Go to [vercel.com](https://vercel.com) on your phone
-2. Sign in with GitHub
-3. Tap **Add New Project**
-4. Select your `truthlens` repository
-5. Tap **Environment Variables** and add:
-   - `GEMINI_API_KEY` = your Gemini key
-   - `TAVILY_API_KEY` = your Tavily key
-6. Tap **Deploy**
-
-Your app will be live at `https://truthlens-xxx.vercel.app` in ~2 minutes! 
-
----
-
-##  Deploy via Replit (Alternative)
-
-1. Go to [replit.com](https://replit.com) on your phone
-2. Create a new Repl → Import from GitHub → paste your repo URL
-3. Add secrets (environment variables) in the Secrets tab
-4. Click **Run**
-
----
-
 ##  Project Structure
 
 ```
@@ -140,10 +92,10 @@ truthlens/
 │   │   └── storage.ts            ← localStorage helpers
 │   └── types/
 │       └── investigation.ts      ← TypeScript types
-├── .env.example                  ← Example env vars (safe to commit)
-├── .env.local                    ← Your real keys (NEVER commit this)
-├── .gitignore                    ← Files excluded from Git
-└── README.md                     ← This file
+├── .env.example                  
+├── .env.local                   
+├── .gitignore                    
+└── README.md                     
 ```
 ##  License
 
