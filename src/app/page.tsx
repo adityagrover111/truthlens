@@ -80,10 +80,6 @@ export default function HomePage() {
             AI-powered credibility investigation. Open a case, scan the evidence,
             and get a full intelligence dossier on any claim.
           </p>
-
-          <p className="font-mono text-xs text-dim uppercase tracking-widest">
-            Not a chatbot. Not a search engine. An investigation tool.
-          </p>
         </div>
 
         {/* INPUT */}
