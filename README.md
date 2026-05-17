@@ -4,7 +4,7 @@
 
 TruthLens is an AI-powered internet detective that analyzes claims, tweets, article snippets, and rumors — then generates a full credibility investigation report with verdict, score, evidence, red flags, and source analysis.
 
-![TruthLens](https://via.placeholder.com/800x400/030508/00d4ff?text=TruthLens+—+AI+Credibility+Investigation)
+![TruthLens](truthlens-three-eta.vercel.app)
 
 ---
 
