@@ -1,17 +1,5 @@
 // ============================================================
 // src/app/api/investigate/route.ts
-// THE BRAIN OF TRUTHLENS — This is the backend API route.
-//
-// How Next.js API routes work:
-// - Files in /app/api/ become API endpoints automatically
-// - This file handles POST requests to /api/investigate
-// - It runs on the SERVER, so API keys are NEVER sent to the browser
-// - The frontend sends a claim → this route processes it → returns a report
-//
-// Why server-side? If we called Gemini from the browser, our API key
-// would be visible to anyone who opens DevTools. Server-side = secret.
-// ============================================================
-
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { type InvestigationReport } from "@/types/investigation";
@@ -169,10 +157,10 @@ Be specific, not vague. Reference actual facts. Minimum 3 items in each evidence
     // GoogleGenerativeAI is imported from the official Google package
     const genAI = new GoogleGenerativeAI(geminiKey);
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash", // Fast and free tier
+      model: "gemini-2.5-flash", 
       generationConfig: {
-        temperature: 0.3,      // Lower = more factual, less creative
-        maxOutputTokens: 4096, // Max length of response
+        temperature: 0.3,      
+        maxOutputTokens: 4096, 
       },
     });
 
@@ -234,7 +222,7 @@ Be specific, not vague. Reference actual facts. Minimum 3 items in each evidence
     // Catch any unexpected errors
     console.error("Investigation API error:", error);
 
-    // Return a user-friendly error (don't expose internal details)
+    // Return a user-friendly error
     return NextResponse.json(
       {
         success: false,
