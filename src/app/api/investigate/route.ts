@@ -1,4 +1,3 @@
-// ============================================================
 // src/app/api/investigate/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
