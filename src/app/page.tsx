@@ -1,54 +1,28 @@
 "use client";
-// ============================================================
-// src/app/page.tsx
-// THE HOMEPAGE — Hero + Claim Input + Results
-//
-// "use client" is needed because we use useState and useEffect
-// (interactive React features that only work in the browser)
-// ============================================================
 
 import { useState } from "react";
 import { Shield, Zap, Globe, Lock, ChevronRight } from "lucide-react";
-import { type InvestigationReport, type ApiResponse } from "@/types/investigation";
+import { type InvestigationReport as ReportData, type ApiResponse as ApiRes } from "@/types/investigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ClaimInput from "@/components/ClaimInput";
-import { type InvestigationReport as ReportData, type ApiResponse } from "@/types/investigation";
+import InvestigationReport from "@/components/InvestigationReport";
 import LoadingInvestigation from "@/components/LoadingInvestigation";
 
-// Feature highlights shown on the homepage
 const FEATURES = [
-  {
-    icon: Zap,
-    title: "AI Evidence Scan",
-    desc: "Extracts and evaluates factual claims automatically",
-  },
-  {
-    icon: Globe,
-    title: "Live Web Search",
-    desc: "Searches real sources when Tavily API is configured",
-  },
-  {
-    icon: Lock,
-    title: "Source Reliability",
-    desc: "Rates evidence by source type and credibility",
-  },
-  {
-    icon: Shield,
-    title: "Risk Detection",
-    desc: "Flags manipulation tactics and missing context",
-  },
+  { icon: Zap,    title: "AI Evidence Scan",   desc: "Extracts and evaluates factual claims automatically" },
+  { icon: Globe,  title: "Live Web Search",     desc: "Searches real sources when Tavily API is configured" },
+  { icon: Lock,   title: "Source Reliability",  desc: "Rates evidence by source type and credibility" },
+  { icon: Shield, title: "Risk Detection",      desc: "Flags manipulation tactics and missing context" },
 ];
 
 export default function HomePage() {
-  // State for the investigation
-  const [isLoading, setIsLoading] = useState(false);
-  const [report, setReport] = useState<ReportData | null>(null);
+  const [isLoading, setIsLoading]       = useState(false);
+  const [report, setReport]             = useState<ReportData | null>(null);
   const [isLiveSearch, setIsLiveSearch] = useState(false);
   const [currentClaim, setCurrentClaim] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError]               = useState<string | null>(null);
 
-  // Called when user submits a claim
   async function handleInvestigate(claim: string) {
     setIsLoading(true);
     setReport(null);
@@ -56,28 +30,21 @@ export default function HomePage() {
     setCurrentClaim(claim);
 
     try {
-      // Call our backend API route (POST /api/investigate)
-      // The API key is on the server — never exposed to the browser!
       const response = await fetch("/api/investigate", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Tell server we're sending JSON
-        },
-        body: JSON.stringify({ claim }), // Convert JS object to JSON string
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ claim }),
       });
 
-      // Parse the JSON response from our API
-      const data: ApiResponse = await response.json();
+      const data: ApiRes = await response.json();
 
       if (!response.ok || !data.success) {
         throw new Error(data.error || "Investigation failed. Please try again.");
       }
 
-      // Update state with the report
       setReport(data.report!);
       setIsLiveSearch(data.isLiveSearch);
 
-      // Scroll down to show the report
       setTimeout(() => {
         document.getElementById("report")?.scrollIntoView({ behavior: "smooth" });
       }, 100);
@@ -92,15 +59,12 @@ export default function HomePage() {
   return (
     <div className="min-h-screen grid-bg">
       <Navbar />
-
-      {/* Scan line overlay — decorative */}
       <div className="fixed inset-0 scan-lines pointer-events-none z-0 opacity-50" />
 
       <main className="relative z-10 max-w-4xl mx-auto px-4 pt-24 pb-12">
 
-        {/* ---- HERO SECTION ---- */}
+        {/* HERO */}
         <div className="text-center mb-12">
-          {/* Status badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-signal/30 bg-signal/5 mb-6">
             <div className="w-1.5 h-1.5 rounded-full bg-verify animate-pulse" />
             <span className="font-mono text-[11px] text-signal tracking-widest uppercase">
@@ -108,10 +72,8 @@ export default function HomePage() {
             </span>
           </div>
 
-          {/* Main heading */}
           <h1 className="font-display font-black text-4xl sm:text-6xl text-bright mb-4 leading-none tracking-tight">
-            TRUTH
-            <span className="text-signal glow-signal">LENS</span>
+            TRUTH<span className="text-signal glow-signal">LENS</span>
           </h1>
 
           <p className="font-body text-base sm:text-lg text-ghost max-w-lg mx-auto mb-2 leading-relaxed">
@@ -124,12 +86,12 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* ---- CLAIM INPUT ---- */}
+        {/* INPUT */}
         <div className="mb-8">
           <ClaimInput onSubmit={handleInvestigate} isLoading={isLoading} />
         </div>
 
-        {/* ---- ERROR STATE ---- */}
+        {/* ERROR */}
         {error && (
           <div className="mb-8 p-4 rounded-lg border border-threat/30 bg-threat/5 text-sm text-threat flex items-start gap-3">
             <span className="text-lg">⚠</span>
@@ -140,14 +102,14 @@ export default function HomePage() {
           </div>
         )}
 
-        {/* ---- LOADING STATE ---- */}
+        {/* LOADING */}
         {isLoading && (
           <div className="glass rounded-xl border border-border mb-8">
             <LoadingInvestigation />
           </div>
         )}
 
-        {/* ---- REPORT ---- */}
+        {/* REPORT */}
         {report && !isLoading && (
           <div id="report">
             <InvestigationReport
@@ -158,7 +120,7 @@ export default function HomePage() {
           </div>
         )}
 
-        {/* ---- FEATURES (shown only when no report) ---- */}
+        {/* FEATURES */}
         {!report && !isLoading && !error && (
           <div className="mt-16">
             <p className="font-mono text-[10px] text-dim uppercase tracking-widest text-center mb-6">
@@ -166,10 +128,7 @@ export default function HomePage() {
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {FEATURES.map(({ icon: Icon, title, desc }) => (
-                <div
-                  key={title}
-                  className="glass rounded-xl border border-border p-4 text-center hover:border-signal/20 transition-all"
-                >
+                <div key={title} className="glass rounded-xl border border-border p-4 text-center hover:border-signal/20 transition-all">
                   <Icon className="w-6 h-6 text-signal mx-auto mb-2" />
                   <p className="font-display font-bold text-xs text-bright mb-1">{title}</p>
                   <p className="text-[11px] text-dim leading-relaxed">{desc}</p>
@@ -177,7 +136,6 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* How it works */}
             <div className="mt-8 glass rounded-xl border border-border p-5">
               <p className="font-mono text-[10px] text-dim uppercase tracking-widest mb-4">
                 Investigation Protocol
