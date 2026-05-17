@@ -1,8 +1,4 @@
-// ============================================================
 // src/components/Footer.tsx
-// Simple footer (no "use client" needed — no interactivity)
-// ============================================================
-
 import { Shield, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 
@@ -23,7 +19,7 @@ export default function Footer() {
           <div className="flex items-center gap-2 text-xs text-dim text-center max-w-sm">
             <AlertTriangle className="w-3.5 h-3.5 text-caution shrink-0" />
             <span>
-              AI analysis only. Always verify critical claims from primary sources.{" "}
+             Always verify critical claims from primary sources.{" "}
               <Link href="/about" className="text-signal hover:underline">
                 Learn more
               </Link>
@@ -32,7 +28,7 @@ export default function Footer() {
 
           {/* Version */}
           <span className="font-mono text-xs text-dim">
-            v1.0.0 — TruthLens
+            Aditya Grover
           </span>
         </div>
       </div>
